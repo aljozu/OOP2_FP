@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\plsdiosito.dir/objects.a
+C:\CLionSFML\mingw32\bin\ar.exe cr CMakeFiles\plsdiosito.dir/objects.a @CMakeFiles\plsdiosito.dir\objects1.rsp
+C:\CLionSFML\mingw32\bin\g++.exe -g   -Wl,--whole-archive CMakeFiles\plsdiosito.dir/objects.a -Wl,--no-whole-archive  -o plsdiosito.exe -Wl,--out-implib,libplsdiosito.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\plsdiosito.dir\linklibs.rsp
