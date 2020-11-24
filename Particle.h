@@ -38,7 +38,7 @@ public:
     int _count();
 
     //returns the amount of time for this particle to collide with the specified particle
-    double time_to_hit(Particle *that);
+    double time_to_hit(const std::shared_ptr<Particle>&that);
 
     //returns the amount of time for this particle to collide with a vertical wall
     double time_to_hit_vertical_wall();
@@ -47,7 +47,7 @@ public:
     double time_to_hit_horizontal_wall();
 
     //updates the velocities of the particles involves in a collision
-    void bounce_off(Particle &that);
+    void bounce_off(std::shared_ptr<Particle> that);
 
     //updates the velocity of this particle upon collision with a vertical wall
     void bounce_off_vertical_wall();

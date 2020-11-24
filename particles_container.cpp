@@ -23,9 +23,27 @@ std::vector<std::shared_ptr<Particle>> particles_container::getContainer() {
 }
 
 void particles_container::drawContainer(RenderWindow &window) {
+    //window.clear(sf::Color::Black);
     for (auto & i : particle_container) {
         window.draw(*i);
     }
+    window.display();
+    sf::Time t3 = sf::seconds(0.2);
+}
+
+size_t particles_container::size() {
+    return particle_container.size();
+}
+
+std::shared_ptr<Particle> &particles_container::operator[](int index) {
+    if(index > particle_container.size()) throw std::runtime_error("The index is greater than the container size");
+    else return particle_container[index];
+}
+
+particles_container &particles_container::operator=(const std::vector<std::shared_ptr<Particle>>& copy) {
+    particles_container temporal;
+    for(int i = 0; i < copy.size(); ++i) particle_container[i] = copy[i];
+    return *this;
 }
 
 particles_container::particles_container() = default;

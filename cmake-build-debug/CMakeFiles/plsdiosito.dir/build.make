@@ -118,11 +118,41 @@ CMakeFiles/plsdiosito.dir/particles_container.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/plsdiosito.dir/particles_container.cpp.s"
 	C:\CLionSFML\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\lojaz\Desktop\OOP2_FP\particles_container.cpp -o CMakeFiles\plsdiosito.dir\particles_container.cpp.s
 
+CMakeFiles/plsdiosito.dir/event.cpp.obj: CMakeFiles/plsdiosito.dir/flags.make
+CMakeFiles/plsdiosito.dir/event.cpp.obj: CMakeFiles/plsdiosito.dir/includes_CXX.rsp
+CMakeFiles/plsdiosito.dir/event.cpp.obj: ../event.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\lojaz\Desktop\OOP2_FP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/plsdiosito.dir/event.cpp.obj"
+	C:\CLionSFML\mingw32\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\plsdiosito.dir\event.cpp.obj -c C:\Users\lojaz\Desktop\OOP2_FP\event.cpp
+
+CMakeFiles/plsdiosito.dir/event.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/plsdiosito.dir/event.cpp.i"
+	C:\CLionSFML\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\lojaz\Desktop\OOP2_FP\event.cpp > CMakeFiles\plsdiosito.dir\event.cpp.i
+
+CMakeFiles/plsdiosito.dir/event.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/plsdiosito.dir/event.cpp.s"
+	C:\CLionSFML\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\lojaz\Desktop\OOP2_FP\event.cpp -o CMakeFiles\plsdiosito.dir\event.cpp.s
+
+CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.obj: CMakeFiles/plsdiosito.dir/flags.make
+CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.obj: CMakeFiles/plsdiosito.dir/includes_CXX.rsp
+CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.obj: ../CollisionSystem.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\lojaz\Desktop\OOP2_FP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.obj"
+	C:\CLionSFML\mingw32\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\plsdiosito.dir\CollisionSystem.cpp.obj -c C:\Users\lojaz\Desktop\OOP2_FP\CollisionSystem.cpp
+
+CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.i"
+	C:\CLionSFML\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\lojaz\Desktop\OOP2_FP\CollisionSystem.cpp > CMakeFiles\plsdiosito.dir\CollisionSystem.cpp.i
+
+CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.s"
+	C:\CLionSFML\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\lojaz\Desktop\OOP2_FP\CollisionSystem.cpp -o CMakeFiles\plsdiosito.dir\CollisionSystem.cpp.s
+
 # Object files for target plsdiosito
 plsdiosito_OBJECTS = \
 "CMakeFiles/plsdiosito.dir/main.cpp.obj" \
 "CMakeFiles/plsdiosito.dir/Particle.cpp.obj" \
-"CMakeFiles/plsdiosito.dir/particles_container.cpp.obj"
+"CMakeFiles/plsdiosito.dir/particles_container.cpp.obj" \
+"CMakeFiles/plsdiosito.dir/event.cpp.obj" \
+"CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.obj"
 
 # External object files for target plsdiosito
 plsdiosito_EXTERNAL_OBJECTS =
@@ -130,6 +160,8 @@ plsdiosito_EXTERNAL_OBJECTS =
 plsdiosito.exe: CMakeFiles/plsdiosito.dir/main.cpp.obj
 plsdiosito.exe: CMakeFiles/plsdiosito.dir/Particle.cpp.obj
 plsdiosito.exe: CMakeFiles/plsdiosito.dir/particles_container.cpp.obj
+plsdiosito.exe: CMakeFiles/plsdiosito.dir/event.cpp.obj
+plsdiosito.exe: CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.obj
 plsdiosito.exe: CMakeFiles/plsdiosito.dir/build.make
 plsdiosito.exe: C:/CLionSFML/mingw32/lib/libsfml-system-s-d.a
 plsdiosito.exe: C:/CLionSFML/mingw32/lib/libsfml-window-s-d.a
@@ -140,7 +172,7 @@ plsdiosito.exe: C:/CLionSFML/mingw32/lib/libfreetype.a
 plsdiosito.exe: CMakeFiles/plsdiosito.dir/linklibs.rsp
 plsdiosito.exe: CMakeFiles/plsdiosito.dir/objects1.rsp
 plsdiosito.exe: CMakeFiles/plsdiosito.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\lojaz\Desktop\OOP2_FP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable plsdiosito.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\lojaz\Desktop\OOP2_FP\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable plsdiosito.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\plsdiosito.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

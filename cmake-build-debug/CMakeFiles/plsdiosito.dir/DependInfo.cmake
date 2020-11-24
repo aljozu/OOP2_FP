@@ -4,7 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "C:/Users/lojaz/Desktop/OOP2_FP/CollisionSystem.cpp" "C:/Users/lojaz/Desktop/OOP2_FP/cmake-build-debug/CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.obj"
   "C:/Users/lojaz/Desktop/OOP2_FP/Particle.cpp" "C:/Users/lojaz/Desktop/OOP2_FP/cmake-build-debug/CMakeFiles/plsdiosito.dir/Particle.cpp.obj"
+  "C:/Users/lojaz/Desktop/OOP2_FP/event.cpp" "C:/Users/lojaz/Desktop/OOP2_FP/cmake-build-debug/CMakeFiles/plsdiosito.dir/event.cpp.obj"
   "C:/Users/lojaz/Desktop/OOP2_FP/main.cpp" "C:/Users/lojaz/Desktop/OOP2_FP/cmake-build-debug/CMakeFiles/plsdiosito.dir/main.cpp.obj"
   "C:/Users/lojaz/Desktop/OOP2_FP/particles_container.cpp" "C:/Users/lojaz/Desktop/OOP2_FP/cmake-build-debug/CMakeFiles/plsdiosito.dir/particles_container.cpp.obj"
   )

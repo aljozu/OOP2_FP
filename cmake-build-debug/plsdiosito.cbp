@@ -84,10 +84,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/lojaz/Desktop/OOP2_FP/CollisionSystem.cpp">
+			<Option target="plsdiosito"/>
+		</Unit>
+		<Unit filename="C:/Users/lojaz/Desktop/OOP2_FP/CollisionSystem.h">
+			<Option target="plsdiosito"/>
+		</Unit>
 		<Unit filename="C:/Users/lojaz/Desktop/OOP2_FP/Particle.cpp">
 			<Option target="plsdiosito"/>
 		</Unit>
 		<Unit filename="C:/Users/lojaz/Desktop/OOP2_FP/Particle.h">
+			<Option target="plsdiosito"/>
+		</Unit>
+		<Unit filename="C:/Users/lojaz/Desktop/OOP2_FP/event.cpp">
+			<Option target="plsdiosito"/>
+		</Unit>
+		<Unit filename="C:/Users/lojaz/Desktop/OOP2_FP/event.h">
 			<Option target="plsdiosito"/>
 		</Unit>
 		<Unit filename="C:/Users/lojaz/Desktop/OOP2_FP/main.cpp">

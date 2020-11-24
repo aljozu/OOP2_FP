@@ -142,6 +142,33 @@ plsdiosito/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/build
 .PHONY : plsdiosito/fast
 
+CollisionSystem.obj: CollisionSystem.cpp.obj
+
+.PHONY : CollisionSystem.obj
+
+# target to build an object file
+CollisionSystem.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.obj
+.PHONY : CollisionSystem.cpp.obj
+
+CollisionSystem.i: CollisionSystem.cpp.i
+
+.PHONY : CollisionSystem.i
+
+# target to preprocess a source file
+CollisionSystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.i
+.PHONY : CollisionSystem.cpp.i
+
+CollisionSystem.s: CollisionSystem.cpp.s
+
+.PHONY : CollisionSystem.s
+
+# target to generate assembly for a file
+CollisionSystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/CollisionSystem.cpp.s
+.PHONY : CollisionSystem.cpp.s
+
 Particle.obj: Particle.cpp.obj
 
 .PHONY : Particle.obj
@@ -168,6 +195,33 @@ Particle.s: Particle.cpp.s
 Particle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/Particle.cpp.s
 .PHONY : Particle.cpp.s
+
+event.obj: event.cpp.obj
+
+.PHONY : event.obj
+
+# target to build an object file
+event.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/event.cpp.obj
+.PHONY : event.cpp.obj
+
+event.i: event.cpp.i
+
+.PHONY : event.i
+
+# target to preprocess a source file
+event.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/event.cpp.i
+.PHONY : event.cpp.i
+
+event.s: event.cpp.s
+
+.PHONY : event.s
+
+# target to generate assembly for a file
+event.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/event.cpp.s
+.PHONY : event.cpp.s
 
 main.obj: main.cpp.obj
 
@@ -232,9 +286,15 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... plsdiosito
+	@echo ... CollisionSystem.obj
+	@echo ... CollisionSystem.i
+	@echo ... CollisionSystem.s
 	@echo ... Particle.obj
 	@echo ... Particle.i
 	@echo ... Particle.s
+	@echo ... event.obj
+	@echo ... event.i
+	@echo ... event.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

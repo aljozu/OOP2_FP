@@ -27,6 +27,15 @@ public:
 
     //another function to draw
     void drawContainer(sf::RenderWindow &window);
+
+    //size of the container
+    size_t size();
+
+    //ovearloading the [] operator
+    std::shared_ptr<Particle> & operator[](int);
+
+    //overloading the assignment operator
+    particles_container & operator=(const std::vector<std::shared_ptr<Particle>>&);
 };
 
 

@@ -64,8 +64,8 @@ int Particle::_count() {
     return count;
 }
 
-double Particle::time_to_hit(Particle *that) {
-    if(this == that) return infinity;
+double Particle::time_to_hit(const std::shared_ptr<Particle>& that) {
+    if(static_cast<const std::shared_ptr<Particle>>(this) == that) return infinity;
     double dx = that->position.x - position.x;
     double dy  = that->position.y - position.y;
     double dvx = that->velocity.x - velocity.x;
@@ -93,16 +93,16 @@ double Particle::time_to_hit_horizontal_wall() {
     else return infinity;
 }
 
-void Particle::bounce_off(Particle &that) {
-    double dx  = that.position.x - position.x;
-    double dy  = that.position.y - position.y;
-    double dvx = that.velocity.x - velocity.x;
-    double dvy = that.velocity.y - velocity.y;
+void Particle::bounce_off(std::shared_ptr<Particle> that) {
+    double dx  = that->position.x - position.x;
+    double dy  = that->position.y - position.y;
+    double dvx = that->velocity.x - velocity.x;
+    double dvy = that->velocity.y - velocity.y;
     double dvdr = dx*dvx + dy*dvy;             // dv dot dr
-    double dist = radius + that.radius;   // distance between particle centers at collison
+    double dist = radius + that->radius;   // distance between particle centers at collison
 
     // magnitude of normal force
-    double magnitude = 2 * mass * that.mass * dvdr / ((mass + that.mass) * dist);
+    double magnitude = 2 * mass * that->mass * dvdr / ((mass + that->mass) * dist);
 
     // normal force, and in x and y directions
     double fx = magnitude * dx / dist;
@@ -111,12 +111,12 @@ void Particle::bounce_off(Particle &that) {
     // update velocities according to normal force
     velocity.x += fx / mass;
     velocity.y += fy / mass;
-    that.velocity.x -= fx / that.mass;
-    that.velocity.y -= fy / that.mass;
+    that->velocity.x -= fx / that->mass;
+    that->velocity.y -= fy / that->mass;
 
     // update collision counts
     count++;
-    count++;
+    that->count++;
 }
 
 void Particle::bounce_off_vertical_wall() {

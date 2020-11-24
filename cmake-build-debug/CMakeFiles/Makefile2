@@ -93,12 +93,12 @@ clean: CMakeFiles/plsdiosito.dir/clean
 CMakeFiles/plsdiosito.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\lojaz\Desktop\OOP2_FP\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4 "Built target plsdiosito"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\lojaz\Desktop\OOP2_FP\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target plsdiosito"
 .PHONY : CMakeFiles/plsdiosito.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/plsdiosito.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\lojaz\Desktop\OOP2_FP\cmake-build-debug\CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\lojaz\Desktop\OOP2_FP\cmake-build-debug\CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/plsdiosito.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\lojaz\Desktop\OOP2_FP\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/plsdiosito.dir/rule
