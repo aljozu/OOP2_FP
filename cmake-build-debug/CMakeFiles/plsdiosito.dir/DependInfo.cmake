@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "C:/Users/lojaz/Desktop/OOP2_FP/Particle.cpp" "C:/Users/lojaz/Desktop/OOP2_FP/cmake-build-debug/CMakeFiles/plsdiosito.dir/Particle.cpp.obj"
   "C:/Users/lojaz/Desktop/OOP2_FP/main.cpp" "C:/Users/lojaz/Desktop/OOP2_FP/cmake-build-debug/CMakeFiles/plsdiosito.dir/main.cpp.obj"
+  "C:/Users/lojaz/Desktop/OOP2_FP/particles_container.cpp" "C:/Users/lojaz/Desktop/OOP2_FP/cmake-build-debug/CMakeFiles/plsdiosito.dir/particles_container.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -679,14 +679,16 @@ C:/CLionSFML/mingw32/include/SFML/Window/WindowStyle.hpp
 C:/Users/lojaz/Desktop/OOP2_FP/Particle.h
 SFML/Graphics.hpp
 C:/Users/lojaz/Desktop/OOP2_FP/SFML/Graphics.hpp
-
-C:/Users/lojaz/Desktop/OOP2_FP/main.cpp
-iostream
--
-vector
--
 memory
 -
+
+C:/Users/lojaz/Desktop/OOP2_FP/main.cpp
+Particle.h
+C:/Users/lojaz/Desktop/OOP2_FP/Particle.h
+particles_container.h
+C:/Users/lojaz/Desktop/OOP2_FP/particles_container.h
+
+C:/Users/lojaz/Desktop/OOP2_FP/particles_container.h
 Particle.h
 C:/Users/lojaz/Desktop/OOP2_FP/Particle.h
 

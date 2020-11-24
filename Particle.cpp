@@ -7,10 +7,9 @@
 #include <limits>
 #include "Particle.h"
 const double infinity = std::numeric_limits<double>::max();
-
+std::random_device dev;
 template<class T>
 double Rand(T first, T last) {
-    std::random_device dev;
     std::default_random_engine eng(dev());
     std::uniform_real_distribution<double> dis(first, last);
     return dis(eng);
@@ -136,6 +135,10 @@ double Particle::kinetic_energy() {
 
 void Particle::set_id(size_t _id) {
     id = _id;
+}
+
+Particle::Particle() {
+
 }
 
 Particle::~Particle() = default;

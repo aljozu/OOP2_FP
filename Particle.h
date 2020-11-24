@@ -5,6 +5,7 @@
 #ifndef PLSDIOSITO_PARTICLE_H
 #define PLSDIOSITO_PARTICLE_H
 #include "SFML/Graphics.hpp"
+#include <memory>
 using namespace sf;
 
 class Particle : public sf::Drawable{
@@ -20,7 +21,7 @@ class Particle : public sf::Drawable{
 public:
     //constructors
     Particle(Vector2f _position, Vector2f _velocity, double _radius, double _mass, bool _sick);
-
+    Particle();
     Particle(bool sick);
 
     //destructors

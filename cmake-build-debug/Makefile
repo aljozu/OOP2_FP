@@ -196,6 +196,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+particles_container.obj: particles_container.cpp.obj
+
+.PHONY : particles_container.obj
+
+# target to build an object file
+particles_container.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/particles_container.cpp.obj
+.PHONY : particles_container.cpp.obj
+
+particles_container.i: particles_container.cpp.i
+
+.PHONY : particles_container.i
+
+# target to preprocess a source file
+particles_container.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/particles_container.cpp.i
+.PHONY : particles_container.cpp.i
+
+particles_container.s: particles_container.cpp.s
+
+.PHONY : particles_container.s
+
+# target to generate assembly for a file
+particles_container.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\plsdiosito.dir\build.make CMakeFiles/plsdiosito.dir/particles_container.cpp.s
+.PHONY : particles_container.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -211,6 +238,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... particles_container.obj
+	@echo ... particles_container.i
+	@echo ... particles_container.s
 .PHONY : help
 
 
