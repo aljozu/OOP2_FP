@@ -27,7 +27,6 @@ void particles_container::drawContainer(RenderWindow &window) {
     for (auto & i : particle_container) {
         window.draw(*i);
     }
-    window.display();
     sf::Time t3 = sf::seconds(0.2);
 }
 
@@ -41,7 +40,6 @@ std::shared_ptr<Particle> &particles_container::operator[](int index) {
 }
 
 particles_container &particles_container::operator=(const std::vector<std::shared_ptr<Particle>>& copy) {
-    particles_container temporal;
     for(int i = 0; i < copy.size(); ++i) particle_container[i] = copy[i];
     return *this;
 }

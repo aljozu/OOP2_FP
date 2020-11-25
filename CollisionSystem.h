@@ -24,7 +24,7 @@ private:
     particles_container particles;
 public:
     explicit CollisionSystem(const particles_container& parts);
-    void predict(const std::shared_ptr<Particle>& a, double limit);
+    void predict(std::shared_ptr<Particle> a, double limit);
     void redraw(double limit, RenderWindow &window);
     void simulate(double limit, RenderWindow &window);
 };

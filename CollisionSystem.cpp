@@ -1,13 +1,13 @@
 //
 // Created by lojaz on 24/11/2020.
 //
-
+#include <iostream>
 #include "CollisionSystem.h"
 
 
 
 
-void CollisionSystem::predict(const std::shared_ptr<Particle>& a, double limit) {
+void CollisionSystem::predict(std::shared_ptr<Particle> a, double limit) {
     if (a == nullptr) return;
 
     // particle-particle collisions
@@ -33,26 +33,32 @@ void CollisionSystem::redraw(double limit, RenderWindow &window) {
 }
 
 void CollisionSystem::simulate(double limit, RenderWindow &window) {
-    pq = std::priority_queue<event, std::vector<event>, Compare_Time>();
+    //pq = std::priority_queue<event, std::vector<event>, Compare_Time>();
     for (int i = 0; i < particles.size(); i++) {
         predict(particles[i], limit);
     }
-    pq.push(event(0, nullptr, nullptr));
+    //pq.push(event(0, nullptr, nullptr));
 
     while (!pq.empty()){
         event e = pq.top();
+
         if (!e.is_valid()) continue;
         std::shared_ptr<Particle> a = e.get_a();
         std::shared_ptr<Particle> b = e.get_b();
 
-        for (int i = 0; i < particles.size(); i++)
+        for (int i = 0; i < particles.size(); i++) {
+            std::cout << e.get_time() - t;
             particles[i]->move(e.get_time() - t);
-        t = e.get_time();
+        }
+
 
         if      (a != nullptr && b != nullptr) a->bounce_off(b);              // particle-particle collision
         else if (a != nullptr && b == nullptr) a->bounce_off_vertical_wall();   // particle-wall collision
         else if (a == nullptr && b != nullptr) b->bounce_off_horizontal_wall(); // particle-wall collision
         else if (a == nullptr && b == nullptr) redraw(limit, window);               // redraw event
+
+        predict(a, limit);
+        predict(b, limit);
     }
 
 }

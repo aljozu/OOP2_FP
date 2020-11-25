@@ -691,12 +691,16 @@ SFML/Graphics.hpp
 C:/Users/lojaz/Desktop/OOP2_FP/SFML/Graphics.hpp
 memory
 -
+cmath
+-
 
 C:/Users/lojaz/Desktop/OOP2_FP/event.h
 Particle.h
 C:/Users/lojaz/Desktop/OOP2_FP/Particle.h
 
 C:/Users/lojaz/Desktop/OOP2_FP/main.cpp
+iostream
+-
 Particle.h
 C:/Users/lojaz/Desktop/OOP2_FP/Particle.h
 particles_container.h

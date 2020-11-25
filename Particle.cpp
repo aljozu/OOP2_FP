@@ -33,8 +33,8 @@ Particle::Particle(Vector2f _position, Vector2f _velocity, double _radius, doubl
 }
 
 Particle::Particle(bool sick) {
-    position.x = Rand(0.0, 550.0);
-    position.y = Rand(0.0, 550.0);
+    position.x = Rand(0.0, 1200.0);
+    position.y = Rand(0.0, 800.0);
     velocity.x = Rand(-0.005, 0.005);
     velocity.y = Rand(-0.005, 0.005);
     radius = 2.0;
@@ -64,8 +64,8 @@ int Particle::_count() {
     return count;
 }
 
-double Particle::time_to_hit(const std::shared_ptr<Particle>& that) {
-    if(static_cast<const std::shared_ptr<Particle>>(this) == that) return infinity;
+double Particle::time_to_hit(std::shared_ptr<Particle> that) {
+    //if(this == that) return infinity;
     double dx = that->position.x - position.x;
     double dy  = that->position.y - position.y;
     double dvx = that->velocity.x - velocity.x;
@@ -93,7 +93,7 @@ double Particle::time_to_hit_horizontal_wall() {
     else return infinity;
 }
 
-void Particle::bounce_off(std::shared_ptr<Particle> that) {
+void Particle::bounce_off(std::shared_ptr<Particle>& that) {
     double dx  = that->position.x - position.x;
     double dy  = that->position.y - position.y;
     double dvx = that->velocity.x - velocity.x;
