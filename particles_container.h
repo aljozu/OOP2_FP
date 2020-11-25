@@ -4,6 +4,8 @@
 
 #ifndef PLSDIOSITO_PARTICLES_CONTAINER_H
 #define PLSDIOSITO_PARTICLES_CONTAINER_H
+
+
 #include "Particle.h"
 
 
@@ -30,6 +32,9 @@ public:
 
     //size of the container
     size_t size();
+
+    //naive implementation
+    void naive_implementation(sf::RenderWindow &window);
 
     //ovearloading the [] operator
     std::shared_ptr<Particle> & operator[](int);

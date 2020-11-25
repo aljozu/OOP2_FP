@@ -676,16 +676,6 @@ SFML/Config.hpp
 
 C:/CLionSFML/mingw32/include/SFML/Window/WindowStyle.hpp
 
-C:/Users/lojaz/Desktop/OOP2_FP/CollisionSystem.h
-queue
--
-Particle.h
-C:/Users/lojaz/Desktop/OOP2_FP/Particle.h
-particles_container.h
-C:/Users/lojaz/Desktop/OOP2_FP/particles_container.h
-event.h
-C:/Users/lojaz/Desktop/OOP2_FP/event.h
-
 C:/Users/lojaz/Desktop/OOP2_FP/Particle.h
 SFML/Graphics.hpp
 C:/Users/lojaz/Desktop/OOP2_FP/SFML/Graphics.hpp
@@ -693,20 +683,16 @@ memory
 -
 cmath
 -
-
-C:/Users/lojaz/Desktop/OOP2_FP/event.h
-Particle.h
-C:/Users/lojaz/Desktop/OOP2_FP/Particle.h
-
-C:/Users/lojaz/Desktop/OOP2_FP/main.cpp
-iostream
+vector
 -
-Particle.h
-C:/Users/lojaz/Desktop/OOP2_FP/Particle.h
+limits
+-
+random
+-
+
+C:/Users/lojaz/Desktop/OOP2_FP/particles_container.cpp
 particles_container.h
 C:/Users/lojaz/Desktop/OOP2_FP/particles_container.h
-CollisionSystem.h
-C:/Users/lojaz/Desktop/OOP2_FP/CollisionSystem.h
 
 C:/Users/lojaz/Desktop/OOP2_FP/particles_container.h
 Particle.h

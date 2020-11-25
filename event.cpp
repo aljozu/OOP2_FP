@@ -3,7 +3,7 @@
 //
 
 #include "event.h"
-#include <cmath>
+
 
 inline bool compare(double a1, double a2) {
     return fabs(a1 - a2) < fabs(a2) * std::numeric_limits<double>::epsilon();

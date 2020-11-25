@@ -2,9 +2,8 @@
 // Created by lojaz on 22/11/2020.
 //
 
-#include <random>
-#include <cmath>
-#include <limits>
+
+
 #include "Particle.h"
 const double infinity = std::numeric_limits<double>::max();
 std::random_device dev;
@@ -139,6 +138,60 @@ void Particle::set_id(size_t _id) {
 
 Particle::Particle() {
 
+}
+
+double Particle::get_posx() {return position.x;}
+
+double Particle::get_posy() {return position.y;}
+
+void Particle::set_velx(double v) {velocity.x = v;}
+
+void Particle::set_vely(double v) {velocity.y = v;}
+
+double Particle::get_velx() {return velocity.x;}
+
+double Particle::get_vely() {return velocity.y;}
+
+bool Particle::collide(std::shared_ptr<Particle> &b) {
+    return fabs((position.x - b->position.x)*(position.x - b->position.x)+
+                                (position.y-b->position.y)*(position.y-b->position.y)) <= (radius + b->radius) * (radius + b->radius);
+}
+
+Vector2f Particle::get_position() {
+    return position;
+}
+
+void Particle::set_position(Vector2f new_pos) {
+    position = new_pos;
+}
+
+double Particle::get_radius() {
+    return radius;
+}
+
+void Particle::set_posx(float newx) {
+    position.x = newx;
+}
+
+void Particle::set_posy(float newy) {
+    position.y = newy;
+}
+
+double Particle::magnitude(std::shared_ptr<Particle> &that) {
+    double dx  = that->position.x - position.x;
+    double dy  = that->position.y - position.y;
+    double dvx = that->velocity.x - velocity.x;
+    double dvy = that->velocity.y - velocity.y;
+    double dvdr = dx*dvx + dy*dvy;             // dv dot dr
+    double dist = radius + that->radius;   // distance between particle centers at collison
+
+    // magnitude of normal force
+    double magnitude = 2 * mass * that->mass * dvdr / ((mass + that->mass) * dist);
+    return magnitude;
+}
+
+double Particle::get_mass() {
+    return mass;
 }
 
 Particle::~Particle() = default;

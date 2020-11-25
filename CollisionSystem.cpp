@@ -5,8 +5,6 @@
 #include "CollisionSystem.h"
 
 
-
-
 void CollisionSystem::predict(std::shared_ptr<Particle> a, double limit) {
     if (a == nullptr) return;
 

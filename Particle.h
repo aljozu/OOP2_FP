@@ -7,6 +7,9 @@
 #include "SFML/Graphics.hpp"
 #include <memory>
 #include <cmath>
+#include <vector>
+#include <limits>
+#include <random>
 using namespace sf;
 
 class Particle : public sf::Drawable{
@@ -62,25 +65,24 @@ public:
     //setter to give each particle a unique id -- not sure of this one
     void set_id(size_t _id);
 
-    double get_posx(){return position.x;}
-    double get_posy(){return position.y;}
-    void set_velx(double v){velocity.x = v;}
-    void set_vely(double v){velocity.y = v;}
-    double get_velx(){return velocity.x;}
-    double get_vely(){return velocity.y;}
+    //usefull methods fot the naive implementation
+    double magnitude(std::shared_ptr<Particle>& that);
+    Vector2f get_position();
+    void set_position(Vector2f new_pos);
+    double get_posx();
+    double get_posy();
+    void set_posx(float newx);
+    void set_posy(float newy);
+    void set_velx(double v);
+    void set_vely(double v);
+    double get_velx();
+    double get_vely();
+    double get_radius();
+    double get_mass();
 
-    bool collide(std::shared_ptr<Particle>& b){
-        auto overlap = [](Vector2f pos1, Vector2f pos2, double r1, double r2){
-            return fabs((pos1.x - pos2.x)*(pos1.x - pos2.x)+(pos1.y-pos2.y)*(pos1.y-pos2.y)) <= (r1 + r2) * (r1 + r2);
-        };
-        double distX = radius - b->radius;
-        double distY = radius - b->radius;
-        double distance = sqrt( (distX*distX) + (distY*distY) );
-        if (distance <= radius + b->radius) {
-            return true;
-        }
-        return false;
-    }
+    bool collide(std::shared_ptr<Particle>& b);
+
+
 };
 
 

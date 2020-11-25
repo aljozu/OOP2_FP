@@ -29,15 +29,8 @@ int main() {
         }
         window.clear();
         //system->simulate(10000, window);
-        parts.drawContainer(window);
-        for(int i = 0; i < 100; ++i) {
-            parts[i]->move(105.1);
-            if(parts[i]->get_posx() >= 1150 || parts[i]->get_posx() <= 1) parts[i]->set_velx(-parts[i]->get_velx());
-            else if(parts[i]->get_posy() >= 799 || parts[i]->get_posy() <= 1) parts[i]->set_vely(-parts[i]->get_vely());
-            for(int j = 0; j < 100; ++j) {
-                if(parts[i]->collide(parts[j])) parts[i]->set_velx(-parts[i]->get_velx());
-            }
-        }
+        parts.naive_implementation(window);
+
         window.display();
     }
 }
