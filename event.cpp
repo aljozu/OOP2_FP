@@ -19,8 +19,6 @@ event::event(double t, const std::shared_ptr<Particle>& _a, const std::shared_pt
     else countB = -1;
 }
 
-
-
 int event::compare_to(event &that) const {
     return compare(time, that.time);
 }

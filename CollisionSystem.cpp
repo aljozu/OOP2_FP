@@ -22,7 +22,9 @@ void CollisionSystem::predict(std::shared_ptr<Particle> a, double limit) {
     if (t + dtY <= limit) pq.push(event(t + dtY, nullptr, a));
 }
 
+//not sure of this one
 void CollisionSystem::redraw(double limit, RenderWindow &window) {
+    window.clear();
     particles.drawContainer(window);
     sf::Time t3 = sf::seconds(0.2);
     if (t < limit) {

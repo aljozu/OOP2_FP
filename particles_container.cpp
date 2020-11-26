@@ -4,13 +4,9 @@
 
 #include "particles_container.h"
 
+particles_container::particles_container() = default;
 
-
-void particles_container::draw(RenderTarget &renderTarget, sf::RenderStates renderStates) const {
-    for (const auto & i : particle_container) {
-        renderTarget.draw(*i);
-    }
-}
+particles_container::~particles_container() = default;
 
 particles_container::particles_container(size_t size, bool sick) {
     if(size > 0){
@@ -18,12 +14,13 @@ particles_container::particles_container(size_t size, bool sick) {
     }
 }
 
-std::vector<std::shared_ptr<Particle>> particles_container::getContainer() {
-    return particle_container;
+void particles_container::draw(RenderTarget &renderTarget, sf::RenderStates renderStates) const {
+    for (const auto & i : particle_container) {
+        renderTarget.draw(*i);
+    }
 }
 
 void particles_container::drawContainer(RenderWindow &window) {
-    //window.clear(sf::Color::Black);
     for (auto & i : particle_container) {
         window.draw(*i);
     }
@@ -44,46 +41,67 @@ particles_container &particles_container::operator=(const std::vector<std::share
     return *this;
 }
 
+inline void set_new_pos(std::shared_ptr<Particle> &i, std::shared_ptr<Particle> &j){
+    //to prevent overlap between particles
+    double distance = sqrt((i->get_posx()-j->get_posx())*(i->get_posx()-j->get_posx()) + (i->get_posy()-j->get_posy())*(i->get_posy()-j->get_posy()));
+    double foverlap = 0.5*(distance - i->get_radius() - j->get_radius());
+
+    //assign new positions to the particles to avoid overlap
+    i->set_posx(i->get_posx()-(foverlap * ((i->get_posx() - j->get_posx()) / distance)));
+    i->set_posy(i->get_posy()-(foverlap * ((i->get_posx() - j->get_posx()) / distance)));
+
+    j->set_posx(j->get_posx()+(foverlap * ((i->get_posx() - j->get_posx()) / distance)));
+    j->set_posy(j->get_posy()+(foverlap * ((i->get_posx() - j->get_posx()) / distance)));
+}
+
+inline void set_new_vel(std::shared_ptr<Particle> &i, std::shared_ptr<Particle> &j){
+    //assign new positions to the particles to avoid overlap
+    double distance = sqrt((i->get_posx()-j->get_posx())*(i->get_posx()-j->get_posx()) + (i->get_posy()-j->get_posy())*(i->get_posy()-j->get_posy()));
+    //normal
+    double nx = (j->get_posx() - i->get_posx())/ distance;
+    double ny = (j->get_posy() - i->get_posy())/ distance;
+    //tangent
+    double tx = -ny;
+    double ty = nx;
+    //dot product tangent
+    double dp_tan1 = i->get_velx() * tx + i->get_vely() * ty;
+    double dp_tan2 = j->get_velx() * tx + j->get_vely() * ty;
+    //dot product normal
+    float dp_Norm1 = i->get_velx() * nx + i->get_vely() * ny;
+    float dp_Norm2 = j->get_velx() * nx + j->get_vely() * ny;
+    //conservation of momentum
+    double m1 = (dp_Norm1 * (i->get_mass() - j->get_mass()) + 2.0f * i->get_mass() * dp_Norm2) / (i->get_mass() + j->get_mass());
+    double m2 = (dp_Norm2 * (j->get_mass() - i->get_mass()) + 2.0f * i->get_mass() * dp_Norm1) / (i->get_mass() + j->get_mass());
+    //update the velocities
+    i->set_velx(tx * dp_tan1 + nx * m1);
+    i->set_vely(ty * dp_tan1 + ny * m1);
+
+    j->set_velx(tx * dp_tan2 + nx * m2);
+    j->set_vely(ty * dp_tan2 + ny * m2);
+}
+
 void particles_container::naive_implementation(RenderWindow &window) {
     drawContainer(window);
-    //std::vector<pair<*std::shared_ptr<Particle>, *std::shared_ptr<Particle>>> coll;
+
     for (auto & i : particle_container) {
-        i->move(10.0);
-        if(i->get_posx() >= 1150 || i->get_posx() <= 1) i->set_velx(-i->get_velx());
-        else if(i->get_posy() >= 799 || i->get_posy() <= 1) i->set_vely(-i->get_vely());
+        i->move(60.0);
+
+        //check for wall collisions
+        if(i->get_posx() >= Width || i->get_posx() <= 1) i->set_velx(-i->get_velx());
+        else if(i->get_posy() >= Height || i->get_posy() <= 1) i->set_vely(-i->get_vely());
+
+        //check for particle - particle collision
         for(auto & j : particle_container) {
             if(i != j) {
                 if (i->collide(j)) {
-                    //to prevent overlap between particles
-                    double distance = sqrt((i->get_posx()-j->get_posx())*(i->get_posx()-j->get_posx()) + (i->get_posy()-j->get_posy())*(i->get_posy()-j->get_posy()));
-                    double foverlap = 0.5*(distance - i->get_radius() - j->get_radius());
-
-                    i->set_posx(i->get_posx()-(foverlap * ((i->get_posx() - j->get_posx()) / distance)));
-                    i->set_posy(i->get_posy()-(foverlap * ((i->get_posx() - j->get_posx()) / distance)));
-
-                    j->set_posx(j->get_posx()+(foverlap * ((i->get_posx() - j->get_posx()) / distance)));
-                    j->set_posy(j->get_posy()+(foverlap * ((i->get_posx() - j->get_posx()) / distance)));
+                    //move the particles in order to avoid overlap
+                    set_new_pos(i, j);
 
                     //update velocity when two particles collide
-                    double dist = i->get_radius() + j->get_radius();
-                    double mag = i->magnitude(j);
-                    double fx = mag * (i->get_posx() - j->get_posx()) / dist;
-                    double fy = mag * (i->get_posy() - j->get_posy()) / dist;
-
-                    i->set_velx(i->get_velx() + i->get_velx() + fx / i->get_mass());
-                    i->set_vely(i->get_vely() + i->get_vely() + fx / i->get_mass());
-
-                    j->set_velx(j->get_velx() - j->get_velx() + fy / j->get_mass());
-                    j->set_vely(j->get_vely() - j->get_vely() + fy / j->get_mass());
+                    set_new_vel(i, j);
                 }
             }
         }
     }
 }
-
-particles_container::particles_container() = default;
-
-particles_container::~particles_container() = default;
-
-
 

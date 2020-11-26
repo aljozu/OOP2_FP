@@ -1,11 +1,9 @@
 //
 // Created by lojaz on 22/11/2020.
 //
-
-
-
 #include "Particle.h"
-const double infinity = std::numeric_limits<double>::max();
+
+//random functions that helps with the creation of particle with random specs
 std::random_device dev;
 template<class T>
 double Rand(T first, T last) {
@@ -13,6 +11,10 @@ double Rand(T first, T last) {
     std::uniform_real_distribution<double> dis(first, last);
     return dis(eng);
 }
+
+//constructors
+
+Particle::Particle() = default;
 
 Particle::Particle(Vector2f _position, Vector2f _velocity, double _radius, double _mass, bool _sick) {
     position = _position;
@@ -49,6 +51,9 @@ Particle::Particle(bool sick) {
     particle.setOutlineColor(sf::Color::Black);
 }
 
+
+//methods
+
 void Particle::move(double dt) {
     position.x += velocity.x * dt;      // d = v *t
     position.y += velocity.y * dt;
@@ -59,12 +64,12 @@ void Particle::draw(sf::RenderTarget &renderTarget, sf::RenderStates renderState
     renderTarget.draw(particle);
 }
 
-int Particle::_count() {
+int Particle::_count() const {
     return count;
 }
 
-double Particle::time_to_hit(std::shared_ptr<Particle> that) {
-    //if(this == that) return infinity;
+double Particle::time_to_hit(const std::shared_ptr<Particle>& that) {
+    if(this == that.get()) return infinity;
     double dx = that->position.x - position.x;
     double dy  = that->position.y - position.y;
     double dvx = that->velocity.x - velocity.x;
@@ -81,13 +86,13 @@ double Particle::time_to_hit(std::shared_ptr<Particle> that) {
 }
 
 double Particle::time_to_hit_vertical_wall() {
-    if      (velocity.x > 0) return (1.0 - position.x - radius) / velocity.x;
+    if      (velocity.x > 0) return (Width - position.x - radius) / velocity.x;
     else if (velocity.x < 0) return (radius - position.x) / velocity.x;
     else  return infinity;
 }
 
 double Particle::time_to_hit_horizontal_wall() {
-    if      (velocity.y > 0) return (1.0 - position.y - radius) / velocity.y;
+    if      (velocity.y > 0) return (Height - position.y - radius) / velocity.y;
     else if (velocity.y < 0) return (radius - position.y) / velocity.y;
     else return infinity;
 }
@@ -95,17 +100,14 @@ double Particle::time_to_hit_horizontal_wall() {
 void Particle::bounce_off(std::shared_ptr<Particle>& that) {
     double dx  = that->position.x - position.x;
     double dy  = that->position.y - position.y;
-    double dvx = that->velocity.x - velocity.x;
-    double dvy = that->velocity.y - velocity.y;
-    double dvdr = dx*dvx + dy*dvy;             // dv dot dr
-    double dist = radius + that->radius;   // distance between particle centers at collison
+    double dist = radius + that->radius;
 
     // magnitude of normal force
-    double magnitude = 2 * mass * that->mass * dvdr / ((mass + that->mass) * dist);
+    double _magnitude = magnitude(that);
 
     // normal force, and in x and y directions
-    double fx = magnitude * dx / dist;
-    double fy = magnitude * dy / dist;
+    double fx = _magnitude * dx / dist;
+    double fy = _magnitude * dy / dist;
 
     // update velocities according to normal force
     velocity.x += fx / mass;
@@ -132,49 +134,9 @@ double Particle::kinetic_energy() {
     return 0.5 * mass * (velocity.x*velocity.x + velocity.y*velocity.y);
 }
 
-void Particle::set_id(size_t _id) {
-    id = _id;
-}
-
-Particle::Particle() {
-
-}
-
-double Particle::get_posx() {return position.x;}
-
-double Particle::get_posy() {return position.y;}
-
-void Particle::set_velx(double v) {velocity.x = v;}
-
-void Particle::set_vely(double v) {velocity.y = v;}
-
-double Particle::get_velx() {return velocity.x;}
-
-double Particle::get_vely() {return velocity.y;}
-
 bool Particle::collide(std::shared_ptr<Particle> &b) {
     return fabs((position.x - b->position.x)*(position.x - b->position.x)+
-                                (position.y-b->position.y)*(position.y-b->position.y)) <= (radius + b->radius) * (radius + b->radius);
-}
-
-Vector2f Particle::get_position() {
-    return position;
-}
-
-void Particle::set_position(Vector2f new_pos) {
-    position = new_pos;
-}
-
-double Particle::get_radius() {
-    return radius;
-}
-
-void Particle::set_posx(float newx) {
-    position.x = newx;
-}
-
-void Particle::set_posy(float newy) {
-    position.y = newy;
+                (position.y-b->position.y)*(position.y-b->position.y)) <= (radius + b->radius) * (radius + b->radius);
 }
 
 double Particle::magnitude(std::shared_ptr<Particle> &that) {
@@ -188,6 +150,60 @@ double Particle::magnitude(std::shared_ptr<Particle> &that) {
     // magnitude of normal force
     double magnitude = 2 * mass * that->mass * dvdr / ((mass + that->mass) * dist);
     return magnitude;
+}
+
+
+//setters
+
+void Particle::set_position(Vector2f new_pos) {
+    position = new_pos;
+}
+
+void Particle::set_posx(float newx) {
+    position.x = newx;
+}
+
+void Particle::set_posy(float newy) {
+    position.y = newy;
+}
+
+void Particle::set_id(size_t _id) {
+    id = _id;
+}
+
+void Particle::set_velx(double v) {
+    velocity.x = v;
+}
+
+void Particle::set_vely(double v) {
+    velocity.y = v;
+}
+
+//getters
+
+double Particle::get_velx() {
+    return velocity.x;
+}
+
+double Particle::get_vely() {
+    return velocity.y;
+}
+
+double Particle::get_posx() {
+    return position.x;
+}
+
+double Particle::get_posy() {
+    return position.y;
+}
+
+Vector2f Particle::get_position() {
+    return position;
+}
+
+
+double Particle::get_radius() {
+    return radius;
 }
 
 double Particle::get_mass() {

@@ -4,16 +4,26 @@
 
 #ifndef PLSDIOSITO_PARTICLE_H
 #define PLSDIOSITO_PARTICLE_H
+
+#define Width 1200
+#define Height 800
+
+
 #include "SFML/Graphics.hpp"
+#include <iostream>
 #include <memory>
 #include <cmath>
+#include <queue>
 #include <vector>
 #include <limits>
 #include <random>
+
+const double infinity = std::numeric_limits<double>::max();
+
 using namespace sf;
 
 class Particle : public sf::Drawable{
-    sf::CircleShape particle;
+    sf::CircleShape particle; //shape of the particle
     Vector2f position; //current position of the particle
     Vector2f velocity;  //velocity of the particle
     double radius; //radius of each particle
@@ -30,8 +40,10 @@ public:
 
     //destructors
     ~Particle() override;
-    //methods
 
+    //
+    //methods
+    //
     //move the partcile in a straight line based on its velocity
     void move(double dt);
 
@@ -39,10 +51,10 @@ public:
     virtual void draw(sf::RenderTarget &renderTarget, sf::RenderStates renderStates) const;
 
     //returns the number of collisions of this particle with walls or other particles
-    int _count();
+    int _count() const;
 
     //returns the amount of time for this particle to collide with the specified particle
-    double time_to_hit(std::shared_ptr<Particle> that);
+    double time_to_hit(const std::shared_ptr<Particle>& that);
 
     //returns the amount of time for this particle to collide with a vertical wall
     double time_to_hit_vertical_wall();
@@ -65,24 +77,32 @@ public:
     //setter to give each particle a unique id -- not sure of this one
     void set_id(size_t _id);
 
-    //usefull methods fot the naive implementation
+    //magnitude of the normal force between two particles that collides
     double magnitude(std::shared_ptr<Particle>& that);
+
+    //function that tell us if two particles are colliding
+    bool collide(std::shared_ptr<Particle>& b);
+
+
+    //
+    // usefull methods for the naive implementation
+    //
+
+    //getters
     Vector2f get_position();
     void set_position(Vector2f new_pos);
     double get_posx();
     double get_posy();
-    void set_posx(float newx);
-    void set_posy(float newy);
-    void set_velx(double v);
-    void set_vely(double v);
     double get_velx();
     double get_vely();
     double get_radius();
     double get_mass();
 
-    bool collide(std::shared_ptr<Particle>& b);
-
-
+    //setters
+    void set_posx(float newx);
+    void set_posy(float newy);
+    void set_velx(double v);
+    void set_vely(double v);
 };
 
 

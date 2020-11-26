@@ -24,9 +24,6 @@ public:
     //default destructor
     ~particles_container() override;
 
-    //returns the container
-    std::vector<std::shared_ptr<Particle>> getContainer();
-
     //another function to draw
     void drawContainer(sf::RenderWindow &window);
 
