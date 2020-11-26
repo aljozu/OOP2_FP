@@ -23,8 +23,8 @@ Particle::Particle(Vector2f _position, Vector2f _velocity, double _radius, doubl
     mass = _mass;
     sick = _sick;
 
-    if(sick) color = sf::Color::Green;
-    else color = sf::Color::Red;
+    if(sick) color = sf::Color::Red;
+    else color = sf::Color::Green;
 
     //giving values to the particle
     particle.setPosition(position);
@@ -41,8 +41,8 @@ Particle::Particle(bool sick) {
     radius = 2.0;
     mass = 0.5;
 
-    if(sick) color = sf::Color::Green;
-    else color = sf::Color::Red;
+    if(sick) color = sf::Color::Red;
+    else color = sf::Color::Green;
 
     //giving values to the particle
     particle.setPosition(position);
@@ -208,6 +208,19 @@ double Particle::get_radius() {
 
 double Particle::get_mass() {
     return mass;
+}
+
+bool Particle::get_sick() {
+    return sick;
+}
+
+void Particle::set_color(sf::Color col) {
+    color = col;
+    particle.setFillColor(col);
+}
+
+sf::Color Particle::get_color() {
+    return color;
 }
 
 Particle::~Particle() = default;

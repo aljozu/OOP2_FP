@@ -97,12 +97,15 @@ public:
     double get_vely();
     double get_radius();
     double get_mass();
+    bool get_sick();
+    sf::Color get_color();
 
     //setters
     void set_posx(float newx);
     void set_posy(float newy);
     void set_velx(double v);
     void set_vely(double v);
+    void set_color(sf::Color col);
 };
 
 

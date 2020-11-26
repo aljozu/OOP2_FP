@@ -30,6 +30,9 @@ public:
     //size of the container
     size_t size();
 
+    //adding a new particle to the vector
+    void add(std::shared_ptr<Particle> &a);
+
     //naive implementation
     void naive_implementation(sf::RenderWindow &window);
 

@@ -18,17 +18,22 @@ void particles_container::draw(RenderTarget &renderTarget, sf::RenderStates rend
     for (const auto & i : particle_container) {
         renderTarget.draw(*i);
     }
+   // sf::Time t3 = sf::seconds(0.2);
 }
 
 void particles_container::drawContainer(RenderWindow &window) {
     for (auto & i : particle_container) {
         window.draw(*i);
     }
-    sf::Time t3 = sf::seconds(0.2);
+   // sf::Time t3 = sf::seconds(0.2);
 }
 
 size_t particles_container::size() {
     return particle_container.size();
+}
+
+void particles_container::add(std::shared_ptr<Particle> &a) {
+    particle_container.push_back(a);
 }
 
 std::shared_ptr<Particle> &particles_container::operator[](int index) {
@@ -81,6 +86,7 @@ inline void set_new_vel(std::shared_ptr<Particle> &i, std::shared_ptr<Particle> 
 }
 
 void particles_container::naive_implementation(RenderWindow &window) {
+    window.clear();
     drawContainer(window);
 
     for (auto & i : particle_container) {
@@ -94,6 +100,7 @@ void particles_container::naive_implementation(RenderWindow &window) {
         for(auto & j : particle_container) {
             if(i != j) {
                 if (i->collide(j)) {
+                    if(i->get_color() == sf::Color::Green) i->set_color(j->get_color());
                     //move the particles in order to avoid overlap
                     set_new_pos(i, j);
 
@@ -104,4 +111,11 @@ void particles_container::naive_implementation(RenderWindow &window) {
         }
     }
 }
+
+
+
+
+
+
+
 
