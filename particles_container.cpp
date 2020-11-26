@@ -90,7 +90,7 @@ void particles_container::naive_implementation(RenderWindow &window) {
     drawContainer(window);
 
     for (auto & i : particle_container) {
-        i->move(60.0);
+        i->move(700.0);
 
         //check for wall collisions
         if(i->get_posx() >= Width || i->get_posx() <= 1) i->set_velx(-i->get_velx());

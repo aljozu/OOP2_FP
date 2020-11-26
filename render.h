@@ -10,7 +10,7 @@
 #include "particles_container.h"
 #include "CollisionSystem.h"
 
-particles_container parts(400, false);
+particles_container parts(1000, false);
 
 void events(sf::RenderWindow &window){
     sf::Event event;
