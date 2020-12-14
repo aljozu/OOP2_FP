@@ -13,7 +13,7 @@
 struct Compare_Time{
     bool operator()(const event& e1, const event& e2) const
     {
-        return e1.get_time() < e1.get_time();
+        return e1.get_time() < e2.get_time();
     }
 };
 
